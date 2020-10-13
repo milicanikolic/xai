@@ -88,6 +88,7 @@ docs_src/build/
 xai.egg-info
 .eggs
 .ipynb_checkpoints
+.idea
 
 xai.egg-info/
 build/

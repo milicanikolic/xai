@@ -1116,14 +1116,14 @@ def smile_imbalance(
     return d
 
 
-def feature_importance(x, y, func, repeat=10, plot=True):
-    base_score = func(x, y)
+def feature_importance(x, y, model, func, repeat=10, plot=True):
+    base_score = func(model, x, y)
     imp = [0] * len(x.columns)
     for i in range(repeat):
         for j, c in enumerate(x.columns):
             tmp = x[c].values.copy()
             np.random.shuffle(x[c].values)
-            score = func(x, y)
+            score = func(model, x, y)
             x[c] = tmp
             imp[j] += base_score - score
     imp = [a/repeat for a in imp]
